@@ -7,9 +7,6 @@ class EmailController {
 		const data = request.only(["emails","assunto"]);
 
 		let transporter = nodemailer.createTransport({
-	    // host: 'smtp.ethereal.email',
-	    // port: 587,
-	    // secure: false,
 	    service: 'gmail',
 	    auth: {
 	      user: 'fixunesp@gmail.com',
@@ -20,7 +17,7 @@ class EmailController {
 		let info = await transporter.sendMail({
 	    from: 'fixunesp@gmail.com',
 	    to: data['emails'],
-	    subject: 'FixUnesp',
+	    subject: 'FeedBack FixUnesp',
 	    // text: assunto,
 	    html: data['assunto']
 	  },
@@ -28,10 +25,6 @@ class EmailController {
 	      if (err) {
 	        console.log(err);
 	        return err;
-	      }
-	      else {
-	        console.log('Email enviado !!' + info);
-	        return 'sucess';
 	      }
 	    }
 	  );
